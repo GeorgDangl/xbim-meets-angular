@@ -12,7 +12,6 @@ so you need to clone it locally and then install via reference, e.g. in `package
   "dependencies": {
     "xbim-webui": "file:../../XbimWebUI/Xbim.WeXplorer"
   }
-
 ```
 
 ### Using the xBrowser
