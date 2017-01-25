@@ -2,7 +2,7 @@
 
 [Live Demo](https://xbim-web.dangl.me)
 
-This is a demonstration about how to use the [xBim WebUI toolkit](https://github.com/xBimTeam/XbimWebUI) in combination with TypeScript and Angular.
+This is a demonstration about how to use the [xBim WebUI toolkit](https://github.com/GeorgDangl/XbimWebUI) in combination with TypeScript and Angular.
 
 ### Using xBim-WebUI in your project
 
