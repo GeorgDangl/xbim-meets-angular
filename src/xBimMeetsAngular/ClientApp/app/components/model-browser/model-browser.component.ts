@@ -98,6 +98,7 @@ export class ModelBrowserComponent implements AfterViewInit {
 
         this.setUpViewer();
         this.setViewerTouchNavigation();
+        this.setViewerTouchPick();
     }
 
     private setUpViewer() {
@@ -295,5 +296,97 @@ export class ModelBrowserComponent implements AfterViewInit {
 
         //apply transformation in right order
         this.viewer._mvMatrix = glMatrix.mat4.multiply(glMatrix.mat4.create(), transform, this.viewer._mvMatrix);
+    }
+
+    private setViewerTouchPick() {
+
+        var touchDown = false;
+        var lastTouchX: number;
+        var lastTouchY: number;
+        var maximumLengthBetweenDoubleTaps = 200;
+        var lastTap = new Date();
+
+        var id = -1;
+
+        //set initial conditions so that different gestures can be identified
+        var handleTouchStart = (event: TouchEvent) => {
+            if (event.touches.length !== 1) {
+                return;
+            }
+
+
+            touchDown = true;
+            lastTouchX = event.touches[0].clientX;
+            lastTouchY = event.touches[0].clientY;
+            //get coordinates within canvas (with the right orientation)
+            var r = this.viewer._canvas.getBoundingClientRect();
+            var viewX = lastTouchX - r.left;
+            var viewY = this.viewer._height - (lastTouchY - r.top);
+
+            //this is for picking
+            id = this.viewer._getID(viewX, viewY);
+
+            var now = new Date();
+            var isDoubleTap = (now.getTime() - lastTap.getTime()) < maximumLengthBetweenDoubleTaps;
+            if (isDoubleTap) {
+                this.viewer._fire('dblclick', { id: id });
+            };
+            lastTap = now;
+
+            /**
+            * Occurs when mousedown event happens on underlying canvas.
+            *
+            * @event xViewer#mouseDown
+            * @type {object}
+            * @param {Number} id - product ID of the element or null if there wasn't any product under mouse
+            */
+            this.viewer._fire('mouseDown', { id: id });
+
+            this.viewer._disableTextSelection();
+        };
+
+        var handleTouchEnd = (event: TouchEvent) => {
+            if (!touchDown) {
+                return;
+            }
+            touchDown = false;
+
+            var endX = event.changedTouches[0].clientX;
+            var endY = event.changedTouches[0].clientY;
+
+            var deltaX = Math.abs(endX - lastTouchX);
+            var deltaY = Math.abs(endY - lastTouchY);
+
+            console.log(deltaX);
+            console.log(deltaY);
+
+            //if it was a longer movement do not perform picking
+            if (deltaX < 3 && deltaY < 3) {
+
+                var handled = false;
+                this.viewer['_plugins'].forEach(function (plugin) {
+                    if (!plugin.onBeforePick) {
+                        return;
+                    }
+                    handled = handled || plugin.onBeforePick(id);
+                },
+                    this);
+
+                /**
+                * Occurs when user click on model.
+                *
+                * @event xViewer#pick
+                * @type {object}
+                * @param {Number} id - product ID of the element or null if there wasn't any product under mouse
+                */
+                if (!handled) this.viewer._fire('pick', { id: id });
+            }
+
+            this.viewer._enableTextSelection();
+        };
+
+
+        this.viewer._canvas.addEventListener('touchstart', (event) => handleTouchStart(event), true);
+        this.viewer._canvas.addEventListener('touchend', (event) => handleTouchEnd(event), true);
     }
 }
