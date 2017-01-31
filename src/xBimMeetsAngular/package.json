@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "webpack": "webpack",
+    "webpack:watch": "webpack --watch",
     "webpack:vendor": "webpack --config webpack.config.vendor.js"
   },
   "dependencies": {

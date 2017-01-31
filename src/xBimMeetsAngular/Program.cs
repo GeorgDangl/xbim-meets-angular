@@ -18,6 +18,7 @@ namespace XBimViewerTest
                 .Build();
 
             var host = new WebHostBuilder()
+                .UseUrls("http://*:5000", "http://0.0.0.0:5000")
                 .UseConfiguration(config)
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
