@@ -58,7 +58,7 @@
       "appsettings.json",
       "ClientApp/dist",
       "Views",
-      "web.config",
+      "web*.config",
       "wwwroot"
     ],
     "exclude": [
