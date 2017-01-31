@@ -2,3 +2,23 @@
 <canvas id="viewer" width="500" height="300"></canvas>
 <h3 *ngIf="loadingFile">Loading model...</h3>
 <p>You're seeing a 3d model of a building completely rendered within your browser.</p>
+<div class="row">
+    <div class="col-md-3">
+        Click action:
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <!-- TODO: Make this Angular-y instead of doing copy & paste from the xBim example -->
+        <select id="cmbSelection" class="form-control">
+            <option value="noAction">No action</option>
+            <option value="select">Select</option>
+            <option value="hide">Hide</option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <button class="btn btn-default" (click)="resetViewerState()">Reset State</button>
+    </div>
+</div>

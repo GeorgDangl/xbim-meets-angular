@@ -104,29 +104,46 @@ export class ModelBrowserComponent implements AfterViewInit {
         //alert('WebGL support is OK');
         this.viewer = new xViewer("viewer-canvas");
         this.viewer.background = [249, 249, 249, 255];
-        this.viewer.on("mouseDown", function (args) {
-            if (!self.keepTarget) self.viewer.setCameraTarget(args.id);
-        });
-        this.viewer.on("pick", function (args) {
-            self.browser.activateEntity(args.id);
-            self.viewer.renderingMode = "normal";
-            self.viewer.resetStates(true);
-            self.keepTarget = false;
-        });
-        this.viewer.on("dblclick", function (args) {
-            self.viewer.resetStates(true);
-            self.viewer.renderingMode = "x-ray";
-            var id = args.id;
-            self.viewer.setState(xState.HIGHLIGHTED, [id]);
-            self.viewer.zoomTo(id);
-            self.keepTarget = true;
-        });
+        this.viewer.on("mouseDown",
+            function(args) {
+                if (!self.keepTarget) self.viewer.setCameraTarget(args.id);
+            });
+        this.viewer.on("pick",
+            function(args) {
+                self.browser.activateEntity(args.id);
+                self.viewer.renderingMode = "normal";
+                self.viewer.resetStates(true);
+                self.keepTarget = false;
+            });
+        this.viewer.on("dblclick",
+            function(args) {
+                self.viewer.resetStates(true);
+                self.viewer.renderingMode = "x-ray";
+                var id = args.id;
+                self.viewer.setState(xState.HIGHLIGHTED, [id]);
+                self.viewer.zoomTo(id);
+                self.keepTarget = true;
+            });
 
         this.viewer.load("/models/LakesideRestaurant.wexbim", 'modelWexbim');
         this.browser.load("/models/LakesideRestaurant.json");
 
         var cube = new xNavigationCube();
         this.viewer.addPlugin(cube);
+
+        var currentlySelectedElement: any;
+        this.viewer.on('pick',
+            (args) => {
+                if (currentlySelectedElement) {
+                    this.viewer.setState(xState.UNSTYLED, [currentlySelectedElement]);
+                }
+                if (currentlySelectedElement === args.id) {
+                    currentlySelectedElement = null;
+                    return;
+                }
+                currentlySelectedElement = args.id;
+                this.viewer.setState(xState.HIGHLIGHTED, [args.id]);
+            });
 
         this.viewer.start();
     }
