@@ -220,9 +220,6 @@ export class ViewerComponent implements AfterViewInit {
             var deltaX = Math.abs(endX - lastTouchX);
             var deltaY = Math.abs(endY - lastTouchY);
 
-            console.log(deltaX);
-            console.log(deltaY);
-
             //if it was a longer movement do not perform picking
             if (deltaX < 3 && deltaY < 3) {
 
