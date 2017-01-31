@@ -1,3 +1,5 @@
+$environment = "Production"
+
 # Restore NuGet dependencies
 & dotnet restore src\xBimMeetsAngular
 
@@ -6,7 +8,7 @@ cd .\src\xBimMeetsAngular
 & npm install
 
 # Compiliation of .Net and webpack
-$env:ASPNETCORE_ENVIRONMENT = "Production"
+$env:ASPNETCORE_ENVIRONMENT = $environment
 & dotnet build -c $environment
 & node node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js
 & node node_modules/webpack/bin/webpack.js --config webpack.config.js
