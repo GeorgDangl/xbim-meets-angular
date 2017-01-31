@@ -9,7 +9,8 @@ import 'jquery-ui/ui/widgets/accordion';
 declare var $: any; // xBrowser is internally dependant on jQuery being globally available
 
 @Component({
-    templateUrl: './model-browser.component.html'
+    templateUrl: './model-browser.component.html',
+    styles: [ require('./model-browser.component.css')] 
 })
 export class ModelBrowserComponent implements AfterViewInit {
 
@@ -139,8 +140,8 @@ export class ModelBrowserComponent implements AfterViewInit {
         });
 
         $("#btnLocate").button().click(function () {
-            var id = $(self).data("id");
-            if (typeof (id) != "undefined" && this.viewer) {
+            var id = $("#btnLocate").data("id");
+            if (typeof (id) != "undefined" && self.viewer) {
                 self.viewer.zoomTo(parseInt(id));
             }
         });

@@ -1,57 +1,69 @@
-﻿<div id="viewer-container">
-    <canvas id="viewer-canvas"></canvas>
-    <div style="position: absolute; left: 5px; top: 5px; padding: 5px;" id="toolbar" class="ui-widget-header ui-corner-all">
-        <button id="btnClip">Clip</button>
-        <button id="btnUnclip">Unclip</button>
+﻿<div class="row">
+    <div class="col-sm-3">
+        <div id="semantic-model-container" class="noselect">
+            <div id="semantic-model">
+                <h3>Spatial structure</h3>
+                <div class="no-overflow">
+                    <div id="structure" class="semantic-model-tree"></div>
+                </div>
+                <h3>Asset types</h3>
+                <div class="no-overflow">
+                    <div id="assetTypes" class="semantic-model-tree"></div>
+                </div>
+                <h3>Systems</h3>
+                <div class="no-overflow">
+                    <div id="systems" class="semantic-model-tree"></div>
+                </div>
+                <h3>Zones</h3>
+                <div class="no-overflow">
+                    <div id="zones" class="semantic-model-tree"></div>
+                </div>
+                <h3>Contacts</h3>
+                <div class="no-overflow">
+                    <div id="contacts" class="semantic-model-tree"></div>
+                </div>
+                <h3>Documents</h3>
+                <div class="no-overflow">
+                    <div id="facility-documents" class="semantic-model-tree"></div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<div id="semantic-model-container" class="noselect">
-    <div id="semantic-model">
-        <h3>Spatial structure</h3>
-        <div class="no-overflow">
-            <div id="structure" class="semantic-model-tree"></div>
+    <div class="col-sm-6">
+        <div id="viewer-container">
+            <canvas id="viewer-canvas"></canvas>
+            <div style="position: absolute; left: 5px; top: 5px; padding: 5px;" id="toolbar" class="ui-widget-header ui-corner-all">
+                <button id="btnClip">Clip</button>
+                <button id="btnUnclip">Unclip</button>
+            </div>
         </div>
-        <h3>Asset types</h3>
-        <div class="no-overflow">
-            <div id="assetTypes" class="semantic-model-tree"></div>
-        </div>
-        <h3>Systems</h3>
-        <div class="no-overflow">
-            <div id="systems" class="semantic-model-tree"></div>
-        </div>
-        <h3>Zones</h3>
-        <div class="no-overflow">
-            <div id="zones" class="semantic-model-tree"></div>
-        </div>
-        <h3>Contacts</h3>
-        <div class="no-overflow">
-            <div id="contacts" class="semantic-model-tree"></div>
-        </div>
-        <h3>Documents</h3>
-        <div class="no-overflow">
-            <div id="facility-documents" class="semantic-model-tree"></div>
+    </div>
+    <div class="col-sm-3">
+        <div id="semantic-descriptive-info-container">
+            <div id="semantic-descriptive-info">
+                <h3 id="attrprop-header">Properties and attributes </h3>
+                <div class="no-overflow-y">
+                    <div id="attrprop"></div>
+                </div>
+                <h3>Documents</h3>
+                <div class="no-overflow">
+                    <div id="documents"></div>
+                </div>
+                <h3>Tasks</h3>
+                <div class="no-overflow">
+                    <div id="issues"></div>
+                </div>
+                <h3>Assignments</h3>
+                <div class="no-overflow">
+                    <div id="assignments"></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<div id="semantic-descriptive-info-container">
-    <div id="semantic-descriptive-info">
-        <h3 id="attrprop-header">Properties and attributes </h3>
-        <div class="no-overflow-y">
-            <div id="attrprop"></div>
-        </div>
-        <h3>Documents</h3>
-        <div class="no-overflow">
-            <div id="documents"></div>
-        </div>
-        <h3>Tasks</h3>
-        <div class="no-overflow">
-            <div id="issues"></div>
-        </div>
-        <h3>Assignments</h3>
-        <div class="no-overflow">
-            <div id="assignments"></div>
-        </div>
-    </div>
-</div>
+
+
+
+
 <span class="right" id="btnLocate"><span class="ui-icon ui-icon-pin-s left"></span> Locate</span>

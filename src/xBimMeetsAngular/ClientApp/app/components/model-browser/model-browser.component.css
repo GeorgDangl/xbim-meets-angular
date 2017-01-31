@@ -1,0 +1,20 @@
+﻿#semantic-model-container {
+    height: 100vh;
+    width: auto;
+    position: relative;
+}
+#viewer-container {
+    height: 100vh;
+    width: auto;
+    position: relative;
+    left: auto;
+    right: auto;
+}
+#semantic-descriptive-info-container {
+    height: 100vh;
+    width: auto;
+    position: relative;
+}
+#btnLocate {
+    right:27px;
+}
