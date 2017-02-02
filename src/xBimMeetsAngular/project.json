@@ -29,7 +29,9 @@
   },
 
   "frameworks": {
-    "net461": { }
+    "net461": {
+      "imports": ["netstandard1.6"]
+    }
   },
 
   "buildOptions": {
