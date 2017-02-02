@@ -15,7 +15,7 @@ $env:ASPNETCORE_ENVIRONMENT = $environment
 
 # Publishing to folder
 & dotnet publish -o publish -c Staging
-& dotnet publish-iis --publish-folder publish -c Staging -f netcoreapp1.1
+& dotnet publish-iis --publish-folder publish -c Staging -f net461
 
 # Applying web.config transformations
 $webConfigTransformatorPackages = Join-Path -Path $env:USERPROFILE -ChildPath "\.nuget\packages\WebConfigTransformRunner"
