@@ -1,0 +1,10 @@
+<h1>Welcome to the xBimViewer Test!</h1>
+<canvas id="viewer" width="500" height="300"></canvas>
+<p>You're seeing a 3d model of a building completely rendered within your browser.</p>
+<p>Please note that this example is hosted on a small VPS, so performance of model conversion might be limited.</p>
+<div *ngIf="!loadComplete">
+    <hr />
+    <p>Please select an Ifc2x3 or Ifc4 file to display.</p>
+    <input type="file" accept=".ifc" [disabled]="loadingFile" (change)="selectedFileChanged($event)" class="form-control" />
+    <p *ngIf="loadingFile">Loading model...</p>
+</div>

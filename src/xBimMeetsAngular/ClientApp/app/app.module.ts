@@ -6,6 +6,7 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { ViewerComponent } from './components/viewer/viewer.component';
 import { ModelBrowserComponent } from './components/model-browser/model-browser.component';
+import { CustomFileComponent } from './components/custom-file/custom-file.component';
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -14,7 +15,8 @@ import { ModelBrowserComponent } from './components/model-browser/model-browser.
         NavMenuComponent,
         HomeComponent,
         ViewerComponent,
-        ModelBrowserComponent
+        ModelBrowserComponent,
+        CustomFileComponent
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
@@ -23,6 +25,7 @@ import { ModelBrowserComponent } from './components/model-browser/model-browser.
             { path: 'home', component: HomeComponent },
             { path: 'viewer', component: ViewerComponent },
             { path: 'model-browser', component: ModelBrowserComponent },
+            { path: 'custom-file', component: CustomFileComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]

@@ -1,9 +1,5 @@
 {
   "dependencies": {
-    "Microsoft.NETCore.App": {
-      "version": "1.1.0",
-      "type": "platform"
-    },
     "Microsoft.AspNetCore.Diagnostics": "1.1.0",
     "Microsoft.AspNetCore.Mvc": "1.1.0",
     "Microsoft.AspNetCore.Razor.Tools": {
@@ -21,7 +17,9 @@
     "Microsoft.Extensions.Logging.Console": "1.1.0",
     "Microsoft.Extensions.Logging.Debug": "1.1.0",
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.1.0",
-    "WebConfigTransformRunner": "1.0.0.1" 
+    "WebConfigTransformRunner": "1.0.0.1",
+    "Xbim.Essentials": "4.0.27",
+    "Xbim.Geometry": "4.0.11"
   },
 
   "tools": {
@@ -31,19 +29,20 @@
   },
 
   "frameworks": {
-    "netcoreapp1.1": {
-      "imports": [
-        "dotnet5.6",
-        "portable-net45+win8"
-      ]
-    }
+    "net461": { }
   },
 
   "buildOptions": {
     "emitEntryPoint": true,
     "preserveCompilationContext": true,
     "compile": {
-      "exclude": ["node_modules"]
+      "exclude": [ "node_modules" ]
+    },
+    "copyToOutput": {
+      "mappings": {
+        "Xbim.Geometry.Engine32.dll": "Dependencies/Xbim.Geometry.Engine32.dll",
+        "Xbim.Geometry.Engine64.dll": "Dependencies/Xbim.Geometry.Engine64.dll"
+      }
     }
   },
 
@@ -64,6 +63,10 @@
     "exclude": [
       "wwwroot/dist/*.map"
     ]
+  },
+
+  "scripts": {
+    "precompile": "Powershell -executionpolicy remotesigned -File copyGeometryInteropDlls.ps1"
   },
 
   "tooling": {
