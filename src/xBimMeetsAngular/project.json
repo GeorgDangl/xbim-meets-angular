@@ -64,7 +64,11 @@
     ],
     "exclude": [
       "wwwroot/dist/*.map"
-    ]
+    ],
+    "mappings": {
+      "Xbim.Geometry.Engine32.dll": "Dependencies/Xbim.Geometry.Engine32.dll",
+      "Xbim.Geometry.Engine64.dll": "Dependencies/Xbim.Geometry.Engine64.dll"
+    }
   },
 
   "scripts": {
