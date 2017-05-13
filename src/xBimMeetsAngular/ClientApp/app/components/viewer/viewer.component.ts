@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { xViewer, xState } from 'xbim-webui';
+import { Viewer, State } from 'xbim-webui/xbim-viewer';
 
 var glMatrix = require('xbim-webui/Libs/gl-matrix');
 
@@ -11,12 +11,12 @@ export class ViewerComponent implements AfterViewInit {
 
     constructor(private http: Http) {}
 
-    private viewer: xViewer;
+    private viewer: Viewer;
 
     private loadingFile: boolean = false;
 
     ngAfterViewInit() {
-        this.viewer = new xViewer('viewer');
+        this.viewer = new Viewer('viewer');
         this.viewer.start();
         this.loadingFile = true;
         this.viewer.on('loaded',
@@ -30,10 +30,10 @@ export class ViewerComponent implements AfterViewInit {
                 var option = cmb['value'];
                 switch (option) {
                 case 'select':
-                    this.viewer.setState(xState.HIGHLIGHTED, [args.id]);
+                    this.viewer.setState(State.HIGHLIGHTED, [args.id]);
                     break;
                 case 'hide':
-                    this.viewer.setState(xState.HIDDEN, [args.id]);
+                    this.viewer.setState(State.HIDDEN, [args.id]);
                     break;
                 default:
                     break;

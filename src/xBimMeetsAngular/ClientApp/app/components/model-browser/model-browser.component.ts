@@ -1,10 +1,9 @@
 ﻿import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { xViewer } from 'xbim-webui';
-import { xBrowser } from 'xbim-webui';
-import { xNavigationCube } from 'xbim-webui';
-import { xState } from 'xbim-webui';
-import 'jquery';
+import { Viewer } from 'xbim-webui/xbim-viewer';
+import { Browser } from 'xbim-webui/xbim-browser';
+import { NavigationCube, RenderingMode } from 'xbim-webui/xbim-viewer';
+import { State } from 'xbim-webui/xbim-viewer';
 import 'jquery-ui/ui/widgets/accordion';
 declare var $: any; // xBrowser is internally dependant on jQuery being globally available
 var glMatrix = require('xbim-webui/Libs/gl-matrix');
@@ -17,8 +16,8 @@ export class ModelBrowserComponent implements AfterViewInit {
 
     constructor(private http: Http) { }
 
-    private viewer: xViewer;
-    private browser: xBrowser;
+    private viewer: Viewer;
+    private browser: Browser;
     private keepTarget: boolean = false;
     private _lastSelection: any;
 
@@ -30,7 +29,7 @@ export class ModelBrowserComponent implements AfterViewInit {
         $(window).resize(function () {
             self.reinitControls();
         });
-        this.browser = new xBrowser();
+        this.browser = new Browser();
         this.browser.on("loaded", function (args) {
             var facility = args.model.facility;
             //render parts
@@ -79,17 +78,17 @@ export class ModelBrowserComponent implements AfterViewInit {
             var id = parseInt(entity.id);
             if (id && self.viewer) {
                 self.viewer.resetStates(true);
-                self.viewer.renderingMode = "x-ray";
+                self.viewer.renderingMode = RenderingMode.XRAY;
                 if (entity.type === "assettype") {
                     var ids = [];
                     for (var i = 0; i < entity.children.length; i++) {
                         id = parseInt(entity.children[i].id);
                         ids.push(id);
                     }
-                    this.viewer.setState(xState.HIGHLIGHTED, ids);
+                    this.viewer.setState(State.HIGHLIGHTED, ids);
                 }
                 else {
-                    this.viewer.setState(xState.HIGHLIGHTED, [id]);
+                    this.viewer.setState(State.HIGHLIGHTED, [id]);
                 }
                 this.viewer.zoomTo(id);
                 this.keepTarget = true;
@@ -102,7 +101,7 @@ export class ModelBrowserComponent implements AfterViewInit {
     private setUpViewer() {
         var self = this;
         //alert('WebGL support is OK');
-        this.viewer = new xViewer("viewer-canvas");
+        this.viewer = new Viewer("viewer-canvas");
         this.viewer.background = [249, 249, 249, 255];
         this.viewer.on("mouseDown",
             function(args) {
@@ -111,16 +110,16 @@ export class ModelBrowserComponent implements AfterViewInit {
         this.viewer.on("pick",
             function(args) {
                 self.browser.activateEntity(args.id);
-                self.viewer.renderingMode = "normal";
+                self.viewer.renderingMode = RenderingMode.NORMAL;
                 self.viewer.resetStates(true);
                 self.keepTarget = false;
             });
         this.viewer.on("dblclick",
             function(args) {
                 self.viewer.resetStates(true);
-                self.viewer.renderingMode = "x-ray";
+                self.viewer.renderingMode = RenderingMode.XRAY;
                 var id = args.id;
-                self.viewer.setState(xState.HIGHLIGHTED, [id]);
+                self.viewer.setState(State.HIGHLIGHTED, [id]);
                 self.viewer.zoomTo(id);
                 self.keepTarget = true;
             });
@@ -128,21 +127,21 @@ export class ModelBrowserComponent implements AfterViewInit {
         this.viewer.load("/models/LakesideRestaurant.wexbim", 'modelWexbim');
         this.browser.load("/models/LakesideRestaurant.json");
 
-        var cube = new xNavigationCube();
+        var cube = new NavigationCube();
         this.viewer.addPlugin(cube);
 
         var currentlySelectedElement: any;
         this.viewer.on('pick',
             (args) => {
                 if (currentlySelectedElement) {
-                    this.viewer.setState(xState.UNSTYLED, [currentlySelectedElement]);
+                    this.viewer.setState(State.UNSTYLED, [currentlySelectedElement]);
                 }
                 if (currentlySelectedElement === args.id) {
                     currentlySelectedElement = null;
                     return;
                 }
                 currentlySelectedElement = args.id;
-                this.viewer.setState(xState.HIGHLIGHTED, [args.id]);
+                this.viewer.setState(State.HIGHLIGHTED, [args.id]);
             });
 
         this.viewer.start();

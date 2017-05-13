@@ -1,6 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { Http, ResponseContentType } from '@angular/http';
-import { xViewer, xState } from 'xbim-webui';
+import { Viewer, State } from 'xbim-webui/xbim-viewer';
 import 'rxjs/add/operator/toPromise';
 
 @Component({
@@ -10,12 +10,12 @@ export class CustomFileComponent implements AfterViewInit {
 
     constructor(private http: Http) {}
 
-    private viewer: xViewer;
+    private viewer: Viewer;
     private loadingFile: boolean = false;
     private loadComplete: boolean = false;
 
     ngAfterViewInit() {
-        this.viewer = new xViewer('viewer');
+        this.viewer = new Viewer('viewer');
         this.viewer.start();
     }
 
