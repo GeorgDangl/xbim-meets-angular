@@ -2,6 +2,8 @@
   "name": "xbim-meets-angular",
   "version": "1.0.0",
   "scripts": {
+    "preinstall": "npm run installXBim",
+    "installXBim": "cd .. && cd .. && cd XbimWebUI && cd Xbim.WeXplorer && npm install && tsc && xcopy /y Viewer\\browser\\xbim-browser.css Build && npm run webpack:dev",
     "webpack": "webpack",
     "webpack:watch": "webpack --watch",
     "webpack:vendor": "webpack --config webpack.config.vendor.js"
