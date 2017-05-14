@@ -5,6 +5,7 @@ $environment = "Production"
 
 # Restore npm packages
 cd .\src\xBimMeetsAngular
+& npm run installXBim
 & npm install
 
 # Compiliation of .Net and webpack
