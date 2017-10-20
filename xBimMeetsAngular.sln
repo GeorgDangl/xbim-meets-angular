@@ -1,17 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5CF26B3B-29F1-4F49-96B1-EE27C02611A2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C03DD061-01A5-4973-86C8-FAD7723D6C72}"
 	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "xBimMeetsAngular", "src\xBimMeetsAngular\xBimMeetsAngular.xproj", "{B97792DF-8D22-4EB0-A776-45C5281A014D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xBimMeetsAngular", "src\xBimMeetsAngular\xBimMeetsAngular.csproj", "{B97792DF-8D22-4EB0-A776-45C5281A014D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,5 +28,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B97792DF-8D22-4EB0-A776-45C5281A014D} = {5CF26B3B-29F1-4F49-96B1-EE27C02611A2}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A8BA542B-E158-46D1-95B5-89B52C0D456F}
 	EndGlobalSection
 EndGlobal
