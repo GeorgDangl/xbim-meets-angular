@@ -48,6 +48,7 @@
     <PackageReference Include="WebConfigTransformRunner" Version="1.0.0.1" />
     <PackageReference Include="Xbim.Essentials" Version="4.0.27" />
     <PackageReference Include="Xbim.Geometry" Version="4.0.11" />
+    <PackageReference Include="System.Net.Http" Version="4.3.1" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
