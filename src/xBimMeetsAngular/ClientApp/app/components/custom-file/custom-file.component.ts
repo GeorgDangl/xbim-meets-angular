@@ -1,6 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { Http, ResponseContentType } from '@angular/http';
-import { Viewer, State } from 'xbim-webui/xbim-viewer';
+import { Viewer, State } from 'xbim-viewer';
 import 'rxjs/add/operator/toPromise';
 
 @Component({

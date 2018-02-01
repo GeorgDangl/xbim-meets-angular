@@ -1,8 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { Viewer, State } from 'xbim-webui/xbim-viewer';
-
-var glMatrix = require('xbim-webui/Libs/gl-matrix');
+import { Viewer, State } from 'xbim-viewer';
 
 @Component({
     templateUrl: './viewer.component.html'
@@ -13,12 +11,11 @@ export class ViewerComponent implements AfterViewInit {
 
     private viewer: Viewer;
 
-    private loadingFile: boolean = false;
+    private loadingFile: boolean = true;
 
     ngAfterViewInit() {
         this.viewer = new Viewer('viewer');
         this.viewer.start();
-        this.loadingFile = true;
         this.viewer.on('loaded',
             () => {
                 this.loadingFile = false;

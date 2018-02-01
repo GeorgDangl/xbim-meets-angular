@@ -1,12 +1,15 @@
 ﻿import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { Viewer } from 'xbim-webui/xbim-viewer';
-import { Browser } from 'xbim-webui/xbim-browser';
-import { NavigationCube, RenderingMode } from 'xbim-webui/xbim-viewer';
-import { State } from 'xbim-webui/xbim-viewer';
+import { Viewer } from 'xbim-viewer';
+import { Browser } from 'xbim-browser';
+import { NavigationCube, RenderingMode } from 'xbim-viewer';
+import { State } from 'xbim-viewer';
 import 'jquery-ui/ui/widgets/accordion';
-declare var $: any; // xBrowser is internally dependant on jQuery being globally available
-var glMatrix = require('xbim-webui/Libs/gl-matrix');
+
+// xBrowser is internally dependant on jQuery being globally available
+import * as $ from 'jquery';
+window["$"] = $;
+window["jQuery"] = $;
 
 @Component({
     templateUrl: './model-browser.component.html',
