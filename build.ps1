@@ -11,9 +11,7 @@ If (Test-Path $PSScriptRoot\src\xBimMeetsAngular\wwwroot\dist\) {
 # Restore NuGet dependencies
 & dotnet restore src\xBimMeetsAngular
 
-# Restore npm packages
-cd .\src\xBimMeetsAngular
-& npm install
+# Restore npm packages is handled by dotnet publish
 
 # Compiliation of .Net and webpack
 $env:ASPNETCORE_ENVIRONMENT = $environment
