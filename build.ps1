@@ -1,22 +1,24 @@
 $environment = "Production"
 
+# Clean output folders
+If (Test-Path $PSScriptRoot\src\xBimMeetsAngular\publish\) {
+  Remove-Item -Recurse -Force $PSScriptRoot\src\xBimMeetsAngular\publish\
+}
+If (Test-Path $PSScriptRoot\src\xBimMeetsAngular\wwwroot\dist\) {
+  Remove-Item -Recurse -Force $PSScriptRoot\src\xBimMeetsAngular\wwwroot\dist\
+}
+
 # Restore NuGet dependencies
 & dotnet restore src\xBimMeetsAngular
 
 # Restore npm packages
 cd .\src\xBimMeetsAngular
-& npm run installXBim
 & npm install
 
 # Compiliation of .Net and webpack
 $env:ASPNETCORE_ENVIRONMENT = $environment
-& dotnet build -c $environment
-& node node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js
-& node node_modules/webpack/bin/webpack.js --config webpack.config.js
-
 # Publishing to folder
-& dotnet publish -o publish -c Staging
-& dotnet publish-iis --publish-folder publish -c Staging -f net461
+& dotnet publish -o publish -c $environment
 
 # Applying web.config transformations
 $webConfigTransformatorPackages = Join-Path -Path $env:USERPROFILE -ChildPath "\.nuget\packages\WebConfigTransformRunner"
@@ -39,3 +41,5 @@ ForEach ($directory in $webConfigDirs.Directory){
         Remove-Item -Path $file.FullName
     }
 }
+
+cd $PSScriptRoot
