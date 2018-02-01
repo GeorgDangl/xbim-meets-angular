@@ -11,8 +11,8 @@ export class CustomFileComponent implements AfterViewInit {
     constructor(private http: Http) {}
 
     private viewer: Viewer;
-    private loadingFile: boolean = false;
-    private loadComplete: boolean = false;
+    loadingFile: boolean = false;
+    loadComplete: boolean = false;
 
     ngAfterViewInit() {
         this.viewer = new Viewer('viewer');

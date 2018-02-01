@@ -11,7 +11,7 @@ export class ViewerComponent implements AfterViewInit {
 
     private viewer: Viewer;
 
-    private loadingFile: boolean = true;
+    loadingFile: boolean = true;
 
     ngAfterViewInit() {
         this.viewer = new Viewer('viewer');
