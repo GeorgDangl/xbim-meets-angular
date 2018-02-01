@@ -21,10 +21,10 @@ const nonTreeShakableModules = [
     'es6-shim',
     'event-source-polyfill',
     'jquery',
-    'xbim-webui/xbim-browser',
-    'xbim-webui/xbim-viewer',
-    'xbim-webui/Libs/jquery-ui-styles/jquery-ui.min.css',
-    'xbim-webui/Build/xbim-browser.css' 
+    'xbim-browser',
+    'xbim-viewer',
+    'xbim-browser/Libs/jquery-ui-styles/jquery-ui.min.css',
+    'xbim-browser/xbim-browser.css' 
 ];
 const allModules = treeShakableModules.concat(nonTreeShakableModules);
 
