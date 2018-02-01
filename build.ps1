@@ -14,6 +14,7 @@ If (Test-Path $PSScriptRoot\src\xBimMeetsAngular\wwwroot\dist\) {
 # Restore npm packages is handled by dotnet publish
 
 # Compiliation of .Net and webpack
+cd .\src\xBimMeetsAngular 
 $env:ASPNETCORE_ENVIRONMENT = $environment
 # Publishing to folder
 & dotnet publish -o publish -c $environment
