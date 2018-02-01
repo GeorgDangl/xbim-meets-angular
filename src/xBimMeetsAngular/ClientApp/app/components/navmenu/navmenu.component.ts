@@ -6,4 +6,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./navmenu.component.css']
 })
 export class NavMenuComponent {
+
+    currentYear = (new Date()).getFullYear();
+
 }
