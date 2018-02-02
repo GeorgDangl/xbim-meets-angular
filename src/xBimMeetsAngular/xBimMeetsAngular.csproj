@@ -22,8 +22,8 @@
 
   <ItemGroup>
     <PackageReference Include="WebConfigTransformRunner" Version="1.0.0.1" />
-    <PackageReference Include="Xbim.Essentials" Version="4.0.29" />
-    <PackageReference Include="Xbim.Geometry" Version="4.0.11" />
+    <PackageReference Include="Xbim.Essentials" Version="4.0.30-V005" />
+    <PackageReference Include="Xbim.Geometry" Version="4.0.15-V0029" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.1" />
