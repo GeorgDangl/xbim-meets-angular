@@ -9,8 +9,13 @@ This is a demonstration about how to use the [xBim WebUI toolkit](https://github
 To include the xBim-WebUI project, you need to **add it as a git-submodule**. There's not yet a npm package available,
 so you need to clone it locally and then install via reference, e.g. in `package.json`:
 ``` JSON
+  "scripts": {
+    "preinstall": "npm run installXBim",
+    "installXBim": "cd .. && cd .. && cd XbimWebUI && powershell ./build.ps1"
+  },
   "dependencies": {
-    "xbim-webui": "file:../../XbimWebUI/Xbim.WeXplorer"
+    "xbim-viewer": "file:../../XbimWebUI/Xbim.WeXplorer/npm_bundle_output/xbim-viewer",
+    "xbim-browser": "file:../../XbimWebUI/Xbim.WeXplorer/npm_bundle_output/xbim-browser"
   }
 ```
 
