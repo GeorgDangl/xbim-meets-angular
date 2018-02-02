@@ -15,8 +15,8 @@ If (Test-Path $PSScriptRoot\src\xBimMeetsAngular\wwwroot\dist\) {
 
 # Compiliation of .Net and webpack
 cd .\src\xBimMeetsAngular 
-$env:ASPNETCORE_ENVIRONMENT = $environment
 # Publishing to folder
+& ./copyGeometryInteropDlls.ps1
 & dotnet publish -o publish -c $environment
 
 # Applying web.config transformations
