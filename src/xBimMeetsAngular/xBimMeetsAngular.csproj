@@ -9,14 +9,14 @@
 
   <ItemGroup>
     <None Update="Dependencies\Xbim.Geometry.Engine64.dll">
-      <Link>Xbim.Geometry.Engine64.dll</Link>
+      <Link>x64\Xbim.Geometry.Engine64.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
     </None>
     <None Update="Dependencies\Xbim.Geometry.Engine32.dll">
-      <Link>Xbim.Geometry.Engine32.dll</Link>
+      <Link>x86\Xbim.Geometry.Engine32.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
     </None>
   </ItemGroup>
 
