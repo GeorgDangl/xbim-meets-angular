@@ -13,7 +13,7 @@ window["jQuery"] = $;
 
 @Component({
     templateUrl: './model-browser.component.html',
-    styles: [ require('./model-browser.component.css')] 
+    styleUrls: ['./model-browser.component.css']
 })
 export class ModelBrowserComponent implements AfterViewInit {
 
