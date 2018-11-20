@@ -1,4 +1,0 @@
-[submodule "XbimWebUI"]
-	path = XbimWebUI
-	url = https://github.com/GeorgDangl/XbimWebUI.git
-	branch = feature/npm-publish 

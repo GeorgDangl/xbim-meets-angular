@@ -1,9 +1,9 @@
 ﻿import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { Viewer } from 'xbim-viewer';
-import { Browser } from 'xbim-browser';
-import { NavigationCube, RenderingMode } from 'xbim-viewer';
-import { State } from 'xbim-viewer';
+import { Viewer } from '@dangl/xbim-viewer';
+import { Browser } from '@dangl/xbim-browser';
+import { NavigationCube, RenderingMode } from '@dangl/xbim-viewer';
+import { State } from '@dangl/xbim-viewer';
 import 'jquery-ui/ui/widgets/accordion';
 
 // xBrowser is internally dependant on jQuery being globally available

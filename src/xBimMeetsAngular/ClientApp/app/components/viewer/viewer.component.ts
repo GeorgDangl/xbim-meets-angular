@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { Viewer, State } from 'xbim-viewer';
+import { Viewer, State } from '@dangl/xbim-viewer';
 
 @Component({
     templateUrl: './viewer.component.html'

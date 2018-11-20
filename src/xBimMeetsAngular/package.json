@@ -3,8 +3,6 @@
   "private": true,
   "version": "1.1.0",
   "scripts": {
-    "preinstall": "npm run installXBim",
-    "installXBim": "cd .. && cd .. && cd XbimWebUI && powershell ./build.ps1",
     "test": "karma start ClientApp/test/karma.conf.js"
   },
   "devDependencies": {
@@ -63,7 +61,7 @@
     "zone.js": "0.8.12",
     "webgl-utils": "1.0.1",
     "gl-matrix": "2.3.2",
-    "xbim-viewer": "file:../../XbimWebUI/Xbim.WeXplorer/npm_bundle_output/xbim-viewer",
-    "xbim-browser": "file:../../XbimWebUI/Xbim.WeXplorer/npm_bundle_output/xbim-browser"
+    "@dangl/xbim-viewer": "0.0.2",
+    "@dangl/xbim-browser": "0.0.2"
   }
 }
