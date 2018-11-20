@@ -9,12 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="Dependencies\Xbim.Geometry.Engine64.dll">
+    <None Update="$(NuGetPackageFolders)\Xbim.Geometry\build\x64\Xbim.Geometry.Engine64.dll">
       <Link>x64\Xbim.Geometry.Engine64.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
     </None>
-    <None Update="Dependencies\Xbim.Geometry.Engine32.dll">
+    <None Update="$(NuGetPackageFolders)\Xbim.Geometry\build\x86\Xbim.Geometry.Engine32.dll">
       <Link>x86\Xbim.Geometry.Engine32.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
@@ -34,10 +34,6 @@
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
   </ItemGroup>
-
-  <Target Name="PrecompileScript" BeforeTargets="BeforeBuild">
-    <Exec Command="Powershell -executionpolicy remotesigned -File copyGeometryInteropDlls.ps1" />
-  </Target>
 
   <ItemGroup>
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
