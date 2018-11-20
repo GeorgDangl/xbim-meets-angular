@@ -6,17 +6,19 @@
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+
+    <XBimGeometryVersion>4.0.15-V0042</XBimGeometryVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="$(NuGetPackageFolders)\Xbim.Geometry\build\x64\Xbim.Geometry.Engine64.dll">
+    <None Update="$(NuGetPackageRoot)\Xbim.Geometry\$(XBimGeometryVersion)\build\x64\Xbim.Geometry.Engine64.dll">
       <Link>x64\Xbim.Geometry.Engine64.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
     </None>
-    <None Update="$(NuGetPackageFolders)\Xbim.Geometry\build\x86\Xbim.Geometry.Engine32.dll">
+    <None Update="$(NuGetPackageRoot)\Xbim.Geometry\$(XBimGeometryVersion)\build\x86\Xbim.Geometry.Engine32.dll">
       <Link>x86\Xbim.Geometry.Engine32.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
     </None>
   </ItemGroup>
@@ -24,7 +26,7 @@
   <ItemGroup>
     <PackageReference Include="WebConfigTransformRunner" Version="1.0.0.1" />
     <PackageReference Include="Xbim.Essentials" Version="4.0.30-V037" />
-    <PackageReference Include="Xbim.Geometry" Version="4.0.15-V0042" />
+    <PackageReference Include="Xbim.Geometry" Version="$(XBimGeometryVersion)" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.1.6" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.1.1" />
