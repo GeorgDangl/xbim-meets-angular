@@ -16,6 +16,7 @@ If (Test-Path $PSScriptRoot\src\xBimMeetsAngular\wwwroot\dist\) {
 # Compiliation of .Net and webpack
 cd .\src\xBimMeetsAngular 
 # Publishing to folder
+& dotnet build -c Release
 & dotnet publish -o publish -c $environment
 
 # Applying web.config transformations
