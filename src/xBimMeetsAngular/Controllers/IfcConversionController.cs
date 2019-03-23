@@ -22,13 +22,13 @@ namespace XBimViewerTest.Controllers
             Stream wexBimStream;
             try
             {
-                wexBimStream = await ConvertIfcFileToWexbim(ifcFile.OpenReadStream(), Xbim.Common.Step21.IfcSchemaVersion.Ifc2X3);
+                wexBimStream = await ConvertIfcFileToWexbim(ifcFile.OpenReadStream(), Xbim.Common.Step21.XbimSchemaVersion.Ifc2X3);
             }
             catch // Unfortunately, on a schema mismatch, a regular System.Exception is thrown
             {
                 try
                 {
-                    wexBimStream = await ConvertIfcFileToWexbim(ifcFile.OpenReadStream(), Xbim.Common.Step21.IfcSchemaVersion.Ifc4);
+                    wexBimStream = await ConvertIfcFileToWexbim(ifcFile.OpenReadStream(), Xbim.Common.Step21.XbimSchemaVersion.Ifc4);
                 }
                 catch
                 {
@@ -42,11 +42,11 @@ namespace XBimViewerTest.Controllers
             return BadRequest();
         }
 
-        private static Task<Stream> ConvertIfcFileToWexbim(Stream ifcFileStream, Xbim.Common.Step21.IfcSchemaVersion ifcSchemaVersion)
+        private static Task<Stream> ConvertIfcFileToWexbim(Stream ifcFileStream, Xbim.Common.Step21.XbimSchemaVersion xbimSchemaVersion)
         {
             return Task.Run<Stream>(() =>
             {
-                using (var model = IfcStore.Open(ifcFileStream, Xbim.IO.IfcStorageType.Ifc, ifcSchemaVersion, XbimModelType.MemoryModel))
+                using (var model = IfcStore.Open(ifcFileStream, Xbim.IO.StorageType.Ifc, xbimSchemaVersion, Xbim.IO.XbimModelType.MemoryModel))
                 {
                     var context = new Xbim3DModelContext(model);
                     context.CreateContext();
