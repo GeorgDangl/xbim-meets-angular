@@ -10,12 +10,12 @@
 
   <ItemGroup Condition=" '$(BuildingInsideVisualStudio)' != 'true' ">
     <Content Include="$(PkgXbim_Geometry_Engine_Interop)\build\net47\Xbim.Geometry.Engine64.dll">
-      <Link>x64\Xbim.Geometry.Engine64.dll</Link>
+      <Link>Xbim.Geometry.Engine64.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
     </Content>
     <Content Include="$(PkgXbim_Geometry_Engine_Interop)\build\net47\Xbim.Geometry.Engine32.dll">
-      <Link>x86\Xbim.Geometry.Engine32.dll</Link>
+      <Link>Xbim.Geometry.Engine32.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
     </Content>
