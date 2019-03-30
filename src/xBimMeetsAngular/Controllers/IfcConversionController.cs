@@ -1,11 +1,7 @@
-using System.IO;
-using System;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Xbim.Ifc;
-using Xbim.ModelGeometry.Scene;
+using System.Threading.Tasks;
+using xBimMeetsAngular.Services;
 
 namespace XBimViewerTest.Controllers
 {
@@ -19,47 +15,21 @@ namespace XBimViewerTest.Controllers
             {
                 return BadRequest();
             }
-            Stream wexBimStream;
+
             try
             {
-                wexBimStream = await ConvertIfcFileToWexbim(ifcFile.OpenReadStream(), Xbim.Common.Step21.XbimSchemaVersion.Ifc2X3);
-            }
-            catch // Unfortunately, on a schema mismatch, a regular System.Exception is thrown
-            {
-                try
+                using (var ifcStream = ifcFile.OpenReadStream())
                 {
-                    wexBimStream = await ConvertIfcFileToWexbim(ifcFile.OpenReadStream(), Xbim.Common.Step21.XbimSchemaVersion.Ifc4);
-                }
-                catch
-                {
-                    return BadRequest();
+                    var wexbimConverter = new WexbimConverterService();
+                    var wexBimStream = await wexbimConverter.ConvertAsync(ifcStream);
+                    return File(wexBimStream, "application/octet-stream", "model.wexbim");
                 }
             }
-            if (wexBimStream != null)
+            catch
             {
-                return File(wexBimStream, "application/octet-stream", "model.wexbim");
+                // The conversion failed
+                return BadRequest();
             }
-            return BadRequest();
-        }
-
-        private static Task<Stream> ConvertIfcFileToWexbim(Stream ifcFileStream, Xbim.Common.Step21.XbimSchemaVersion xbimSchemaVersion)
-        {
-            return Task.Run<Stream>(() =>
-            {
-                using (var model = IfcStore.Open(ifcFileStream, Xbim.IO.StorageType.Ifc, xbimSchemaVersion, Xbim.IO.XbimModelType.MemoryModel))
-                {
-                    var context = new Xbim3DModelContext(model);
-                    context.CreateContext();
-                    var memStream = new MemoryStream();
-                    using (var wexBimBinaryWriter = new BinaryWriter(memStream, Encoding.Default, true))
-                    {
-                        model.SaveAsWexBim(wexBimBinaryWriter);
-                        wexBimBinaryWriter.Close();
-                    }
-                    memStream.Position = 0;
-                    return memStream;
-                }
-            });
         }
     }
 }
