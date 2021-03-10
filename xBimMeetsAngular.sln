@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2024
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xBimMeetsAngular", "src\xBimMeetsAngular\xBimMeetsAngular.csproj", "{B4C8BEA6-3FEE-40D4-9826-A13C7E6B98F3}"
 EndProject
@@ -9,9 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7B85B5CF-FB3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5F2AE160-9C0A-41B1-9404-D97F89233083}"
 	ProjectSection(SolutionItems) = preProject
-		build.ps1 = build.ps1
+		Jenkinsfile = Jenkinsfile
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{E4F790DA-350E-4381-808B-D5B7277FA64A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,8 @@ Global
 		{B4C8BEA6-3FEE-40D4-9826-A13C7E6B98F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4C8BEA6-3FEE-40D4-9826-A13C7E6B98F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4C8BEA6-3FEE-40D4-9826-A13C7E6B98F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4F790DA-350E-4381-808B-D5B7277FA64A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4F790DA-350E-4381-808B-D5B7277FA64A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
