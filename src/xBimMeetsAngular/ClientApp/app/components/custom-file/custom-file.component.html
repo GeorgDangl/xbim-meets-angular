@@ -5,6 +5,6 @@
 <div *ngIf="!loadComplete">
     <hr />
     <p>Please select an Ifc2x3 or Ifc4 file to display.</p>
-    <input type="file" accept=".ifc" [disabled]="loadingFile" (change)="selectedFileChanged($event)" class="form-control" />
+    <input type="file" accept=".ifc,.wexbim" [disabled]="loadingFile" (change)="selectedFileChanged($event)" class="form-control" />
     <p *ngIf="loadingFile">Loading model...</p>
 </div>
