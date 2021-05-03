@@ -26,6 +26,8 @@ export class CustomFileComponent implements AfterViewInit {
 
             if (file.name.endsWith('.wexbim')) {
                 this.viewer.load(file, 'model');
+                this.loadingFile = false;
+                this.loadComplete = true;
             } else {
                 formData.append('ifcFile', file);
                 var url = '/Api/IfcConversion/IfcToWexbim';
