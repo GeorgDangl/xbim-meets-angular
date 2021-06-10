@@ -20,6 +20,11 @@ namespace XBimViewerTest.Controllers
             {
                 using (var ifcStream = ifcFile.OpenReadStream())
                 {
+                    if (ifcStream.Length > 5_000_000)
+                    {
+                        return BadRequest("This demo only supports IFC models up to 5 MB");
+                    }
+
                     var wexbimConverter = new WexbimConverterService();
                     var wexBimStream = await wexbimConverter.ConvertAsync(ifcStream);
                     return File(wexBimStream, "application/octet-stream", "model.wexbim");
