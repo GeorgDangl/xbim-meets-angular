@@ -11,6 +11,8 @@ namespace XBimViewerTest.Controllers
         [HttpPost("IfcToWexbim")]
         public async Task<IActionResult> ConvertFromIfcGeometry(IFormFile ifcFile)
         {
+            return BadRequest("This endpoint is deactivated for the demo.");
+
             if (ifcFile == null)
             {
                 return BadRequest();
